@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+   <meta name="viewport" content="width=1024, initial-scale=1.0">
+    <title>Mohammed | Software Developer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="viewer.css">
+    <link rel="stylesheet" href="content.css">
+    <link rel="stylesheet" href="languages.css">
+    <link rel="stylesheet" href="chat.css">
+    <link rel="stylesheet" href="msg.css">
+    <link rel="stylesheet" href="modal.css">
+    <link rel="stylesheet" href="cart.css">
+        <link rel="stylesheet" href="chatai.css">
+</head>
+<body>
+    <div class="scroll-indicator"></div>
+<div class="particles"></div>
+
+ <div class="modal" id="viewerModal">
+    <div class="modal-content glass-card">
+      <div class="language-selection">
+
+<button id="arabicBtn" class="lang-btn">العربية</button>
+</div>
+        <h2 class="modal-title" data-translate="welcome">Welcome!</h2>
+        <p class="modal-text" data-translate="choose_name">Please choose how you'd like to appear in the viewers list:</p>
+        <form id="viewerForm">
+            <div class="form-group">
+                <input type="text" id="viewerName" class="form-input" placeholder="Enter your name (optional)" data-translate-placeholder="enter_name">
+            </div>
+            <div class="modal-buttons">
+                <button type="submit" class="submit-btn modal-btn" data-anonymous="false">
+                    <span class="btn-text" data-translate="submit_name">Submit Name</span>
+                </button>
+                <button type="button" class="submit-btn modal-btn" data-anonymous="true">
+                    <span class="btn-text" data-translate="stay_anonymous">Stay Anonymous</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal" id="arabicConfirmModal">
+  <div class="modal-content glass-card">
+    <h2 class="modal-title">تأكيد الانتقال</h2>
+    <p class="modal-text">النسخة العربية غير مكتملة. هل أنت متأكد أنك تريد الانتقال إليها؟</p>
+    <div class="modal-buttons">
+      <button class="submit-btn modal-btn" onclick="goToArabic()">نعم</button>
+      <button class="submit-btn modal-btn" onclick="closeArabicConfirm()">البقاء</button>
+    </div>
+  </div>
+</div>
+    <div class="container" id="mainContent" style="display: none;">
+        <header class="header">
+            <h1 class="main-title">Mohamed AlAbiya | Full Stack Developer </h1>
+            <p class="subtitle"> This Peoject was built from 0 without the help of a third party or service provider, backEnd (Sqlite + Node.js + Server + Domain ) & frontEnd ( html + css ) </p>
+        </header>
+
+        <div class="main-grid">
+            <div class="glass-card viewers-section">
+                <div class="viewers-content">
+                    <div class="pulse-ring"></div>
+                    <div class="viewers-count" id="viewerCount">0</div>
+                    <div class="viewers-label">Last Viewers</div>
+                    <div class="viewer-list" id="viewerList">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card personal-info">
+                <div class="profile-section">
+                    <div class="profile-image">
+                        <img src="https://i.ibb.co/nTsND4N/IMG-9328.jpg" alt="Mohammed AlAbiya Profile Picture" class="profile-img">
+                    </div>
+                    <div class="personal-text">I am Mohamed AlAbiya, aka ENDUP. I hold a Bachelors degree in Computer Science NU in 2025 "Full Stack Developer" because I have launched some online stores, modified Android and iPhone applications, and possess knowledge of websites. My expertise in server management, data storage, and data presentation is extensive. I have a solid algorithmic approach to providing the best possible solutions for any project with the lowest costs. I am capable of establishing an Online commerce company on my own that operates efficiently, thanks to my skills in server side, client side, backend, and frontend development.</div>
+                </div>
+            </div>
+
+         
+            <div class="glass-card languages-section">
+                <div class="skill-legend">
+                    <h3 class="legend-title">Skill Levels</h3>
+                    <div class="skill-item">
+                        <div class="skill-indicator serious"></div>
+                        <span class="skill-label">Serious - This means that you can work on the language perfectly and all of its Projects are perfect.</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-indicator ok"></div>
+                        <span class="skill-label">OK - This language can be worked on and its Projects are good, but it is not the best.</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-indicator not-good"></div>
+                        <span class="skill-label">Not Good - We are still learning this language and I can work on it with an external assistant or a team.</span>
+                    </div>
+                    <div class="skill-note">
+                        <span class="note-icon">?</span>
+                        <span class="note-text">Note: Video editing, Photoshop, English, or simple skills.. all developers have them, and these are things we use in our projects. They are considered side things and are not our specialty, but we have developed serious knowledge of them.</span>
+                    </div>
+                </div>
+
+                <div class="languages-list">
+                  <div class="language-card cpp" data-skill="serious">
+                        <div class="language-name">Lua , Android extract APKS application To modify</div>
+                        <div class="language-score"></div>
+                        <div class="language-projects">
+                            <h4>Projects:</h4>
+                            <ul>
+                                <li>Polywar-GG-1.0.0-lua</li> <a href="https://github.com/6lj/Polywar-GG-1.0.0-lua" target="_blank" class="project-link">[Link]</a></li>
+                                  <li>Kuboom, Unlook Sabrina And Clown 1.0.0</li> <a href="https://gameguardian.net/forum/files/file/4033-kuboom-unlook-sabrina-and-clown/" target="_blank" class="project-link">[Link]</a></li>
+                                    <li>Bloons TD 6</li> <a href="https://gameguardian.net/forum/files/file/3997-bloons-td-6-hack-everything/" target="_blank" class="project-link">[Link]</a></li>
+                                      <li>Kuboom Mod Menu All version, V5| Kuboom Mod Menu New Version, V6</li><a href="https://gameguardian.net/forum/files/file/3093-kuboom-mod-menu-all-version-v5-kuboom-mod-menu-new-version-v6/" target="_blank" class="project-link">[Link]</a></li>
+                                        <li>Allocate Memory Script (Write) 1.0.0</li> <a href="https://gameguardian.net/forum/files/file/3841-allocate-memory-script-write" target="_blank" class="project-link">[Link]</a></li>
+                                          <li>Hill Climb Racing 2</li> <a href="https://gameguardian.net/forum/files/file/3750-hill-climb-racing-2-hack-coins-and-gems/" target="_blank" class="project-link">[Link]</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                      <div class="language-card cpp" data-skill="serious">
+                        <div class="language-name">Obj-C , ios extract IPA application To modify </div>
+                        <div class="language-score"></div>
+                        <div class="language-projects">
+                            <h4>Projects:</h4>
+                            <ul>
+                                <li>PotatoVPN</li> <a href="https://iosgods.com/topic/172135-hack-potatovpn-all-version/" target="_blank" class="project-link">[Link]</a></li>
+                                  <li>GoArt</li> <a href="https://iosgods.com/topic/172062-hack-goart-pro-subscription-%E2%9E%96-all-ios-version%E2%80%8B/" target="_blank" class="project-link">[Link]</a></li>
+                                    <li>Meitu</li> <a href="https://iosgods.com/topic/172131-hack-meitu-%E7%BE%8E%E5%9B%BE%E7%A7%80%E7%A7%80-9890-all-ios-ver" target="_blank" class="project-link">[Link]</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="language-card html" data-skill="ok">
+                        <div class="language-name">HTML (with CSS)</div>
+                        <div class="language-score"></div>
+                        <div class="language-projects">
+                            <h4>Projects:</h4>
+                            <ul>
+                                <li>Project2-NU-Database-And-php</li>  <a href="https://github.com/6lj/Project2-NU-Database-And-php" target="_blank" class="project-link">[Link]</a></li>
+                                <li>RXOstore</li>  <a href="https://rxoksa.shop/main" target="_blank" class="project-link">[https:
+                                <li>Project-Questions</li>     <a href="https://cc.q5.qa/" target="_blank" class="project-link">[https:
+                                <li>Quran-Encyclopedia</li> <a href="https://q.q5.qa" target="_blank" class="project-link">[https:
+                                <li>RXO-Calculator-KSA</li>
+                                <li>Polywar-Mod-Menu-Website</li>   <a href="https://github.com/6lj/Polywar-Mod-Menu-Website" target="_blank" class="project-link">[Link]</a></li> 
+                                <li>sendmassageandshow</li> <a href="https://msg.q5.qa" target="_blank" class="project-link">[https:
+                                <li>Rate-your-doctor</li>
+                                <li>TV channel <a href="https://q5.qa/t" target="_blank" class="project-link">[https:
+                                 <li>Social Media Page <a href="https://q5.qa" target="_blank" class="project-link">[https:
+                            </ul>
+                        </div>
+                    </div>
+                  <div class="language-card html" data-skill="ok">
+                        <div class="language-name">PHP</div>
+                        <div class="language-score"></div>
+                        <div class="language-projects">
+                            <h4>Projects:</h4>
+                            <ul>
+                             <li>Project2-NU-Database-And-php</li>  <a href="https://github.com/6lj/Project2-NU-Database-And-php" target="_blank" class="project-link">[Link]</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                   <div class="language-card cpp" data-skill="serious">
+                        <div class="language-name">MySQL</div>
+                        <div class="language-score"></div>
+                        <div class="language-projects">
+                            <h4>Projects:</h4>
+                            <ul>
+                              <li>Project2-NU-Database-And-php</li>  <a href="https://github.com/6lj/Project2-NU-Database-And-php" target="_blank" class="project-link">[Link]</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                   <div class="language-card cpp" data-skill="serious">
+                        <div class="language-name">Node.js</div>
+                        <div class="language-score"></div>
+                        <div class="language-projects">
+                            <h4>Projects:</h4>
+                            <ul>
+                                <li>1day-project</li>
+                               <li>sendmassageandshow</li> <a href="https://msg.q5.qa" target="_blank" class="project-link">[https:
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="language-card cpp" data-skill="serious">
+                        <div class="language-name">SQLite</div>
+                        <div class="language-score"></div>
+                        <div class="language-projects">
+                            <h4>Projects:</h4>
+                            <ul>
+                                <li>1day-project</li>
+                                 <li>sendmassageandshow</li> <a href="https://msg.q5.qa" target="_blank" class="project-link">[https:
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="language-card cpp" data-skill="serious">
+                        <div class="language-name">React.js</div>
+                        <div class="language-score"></div>
+                        <div class="language-projects">
+                            <h4>Projects:</h4>
+                            <ul>
+                                <li>1day-project</li>    
+                            </ul>
+                        </div>
+                    </div>
+                       <div class="language-card lua" data-skill="not-good">
+                        <div class="language-name">C++</div>
+                        <div class="language-score"></div>
+                        <div class="language-projects">
+                            <h4>Note:</h4>
+                            <ul>
+                           Write parts of it in Android apps from Android Studio NDK (Native Development Kit) 
+                            </ul>
+                        </div>
+                    </div>
+                  <div class="language-card html" data-skill="ok">
+                        <div class="language-name">C#</div>
+                        <div class="language-score"></div>
+                        <div class="language-projects">
+                            <h4>Note:</h4>
+                            <ul>
+                                <li>Dump.cs to get offset to modify the application for Android. This is for Lua scripts.</li>
+                            </ul>
+                        </div>
+                    </div>
+                      <div class="language-card cpp" data-skill="serious">
+                        <div class="language-name">Python</div>
+                        <div class="language-score"></div>
+                        <div class="language-projects">
+                            <h4>Projects:</h4>
+                            <ul>
+                                <li>Playlist M3U8 </li>    
+                            </ul>
+                        </div>
+                    </div>
+                     <div class="language-card cpp" data-skill="serious">
+                        <div class="language-name">LocalStorage</div>
+                        <div class="language-score"></div>
+                        <div class="language-projects">
+                            <h4>Projects:</h4>
+                            <ul>
+                            <li>RXOstore</li>  <a href="https://rxoksa.shop/main" target="_blank" class="project-link">[https:
+                               <li>Project-Questions</li><a href="https://cc.q5.qa/" target="_blank" class="project-link">[https:
+                                <li>Quran-Encyclopedia</li> <a href="https://q.q5.qa" target="_blank" class="project-link">[https:
+                                <li>Rate-your-doctor</li> 
+                                <li>TV channel <a href="https://q5.qa/t" target="_blank" class="project-link">[Link]</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                 <div class="language-card cpp" data-skill="serious">
+                        <div class="language-name">Player (Video, Music, Live)</div>
+                        <div class="language-score"></div>
+                        <div class="language-projects">
+                            <h4>Projects:</h4>
+                            <ul>
+                                <li>Quran-Encyclopedia <a href="https://q5.qa/vid" target="_blank" class="project-link">[https:
+                                <li>TV channel <a href="https://q5.qa/t" target="_blank" class="project-link">[https:
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<div class="chat-container">
+    <div class="glass-card chatai-glass-card">
+            <div class="chat-header">
+                <div class="chat-status">
+                    <div class="status-indicator online"></div>
+                    <h2>Chat with AI</h2>
+                </div>
+                <div class="chat-actions">
+                        <button class="action-btn" id="clear-chat" title="Clear Chat">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6m3 0V4c0-1 1-2 2-2h4c0-1 1-2 2-2v2"/>
+                            <line x1="10" y1="11" x2="10" y2="17"/>
+                            <line x1="14" y1="11" x2="14" y2="17"/>
+                        </svg>
+                    </button>
+                     <button class="action-btn" id="settings-btn" title="Settings">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="chatai-container">
+                <div id="chatai-messages" class="chatai-messages">
+                    <div class="welcome-message">
+                        <div class="ai-avatar">🤖</div>
+                        <div class="message-content">
+                              <p>Hello! I am ENDUP AI. How can I help you today?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="chatai-loading" class="chatai-loading" style="display: none;">
+                    <div class="typing-indicator">
+                        <div class="typing-dots">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                      <span class="typing-text">Typing...</span>
+                    </div>
+                </div>
+
+                <form id="chatai-form" class="chatai-form">
+                    <div class="input-container">
+                        <input
+                            type="text"
+                            id="chatai-input"
+                            class="chatai-input"
+                            placeholder="Write your message here..."
+
+                        />
+                        <button type="submit" class="chatai-submit" id="send-btn">
+                            <svg class="send-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="22" y1="2" x2="11" y2="13" />
+                                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="input-actions">
+                        <button type="button" class="quick-action" data-message="Explain the concept of artificial intelligence to me">
+                        AI
+                    </button>
+                         <button type="button" class="quick-action" data-message="What are the latest technologies?">
+                        Modern Technologies
+                    </button>
+                      <button type="button" class="quick-action" data-message="Help me solve a problem">
+                        Solve a Problem
+                    </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="glass-card chat-section">
+            <h2 class="chat-title">Live Chat</h2>
+            <div class="chat-messages" id="chatMessages"></div>
+            <form id="chatForm">
+                <div class="form-group">
+                    <input type="text" id="chatMessage" class="form-input" placeholder="Type your message...">
+                    <select id="chatRecipient" class="form-input" disabled>
+                        <option value="all" selected>All</option>
+                    </select>
+                </div>
+                <div class="submit-section">
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Send</span>
+                    </button>
+                    <div class="loading"></div>
+                    <div class="success-message">Message sent!</div>
+                </div>
+            </form>
+        </div>
+ <div class="main-grid">
+
+            <div class="glass-card certificate-section">
+                <h3 class="certificate-title">Certificates</h3>
+                <div class="certificate-card" data-cert-type="Professional">
+                    <div class="certificate-name">Full Stack Web Development</div>
+                    <div class="certificate-type">Professional</div>
+                    <div class="certificate-description">Certified in advanced web development techniques, covering both frontend and backend technologies.</div>
+                </div>
+                <div class="certificate-card" data-cert-type="University">
+                    <div class="certificate-name">Bachelor’s in Computer Science</div>
+                    <div class="certificate-type">University</div>
+                    <div class="certificate-description">Earned from National University (NU) in 2025, specializing in software engineering and algorithms.</div>
+                </div>
+                <div class="certificate-card" data-cert-type="Secondary">
+                    <div class="certificate-name">High School Diploma</div>
+                    <div class="certificate-type">Secondary</div>
+                    <div class="certificate-description">Completed secondary education with a focus on mathematics and sciences.</div>
+                </div>
+                <div class="certificate-card" data-cert-type="Qiyas">
+                    <div class="certificate-name">Qiyas Standardized Test</div>
+                    <div class="certificate-type">Qiyas</div>
+                    <div class="certificate-description">Achieved certification in Saudi Arabia’s standardized test for academic aptitude.</div>
+                </div>
+            </div>
+
+        <div class="glass-card contact-form">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label class="form-label" for="username">Username</label>
+                    <input type="text" id="username" class="form-input" placeholder="Enter your username" >
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="message">Message</label>
+                    <textarea id="message" class="form-textarea" placeholder="Type your message here..." ></textarea>
+                </div>
+                <div class="submit-section">
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Send Message</span>
+                    </button>
+                    <div class="loading"></div>
+                    <div class="success-message">Message sent successfully!</div>
+                    <p class="certificates-note">If you want me to reach you, please provide any method of communication.</p>
+                </div>
+            </form>
+        </div>
+    </div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    document.getElementById('arabicConfirmModal').style.display = 'none';
+
+    document.getElementById('viewerModal').style.display = 'flex';
+
+    const arabicBtn = document.getElementById('arabicBtn');
+    arabicBtn.addEventListener('click', () => {
+        document.getElementById('arabicConfirmModal').style.display = 'flex';
+    });
+});
+
+function goToArabic() {
+    document.getElementById('arabicConfirmModal').style.display = 'none';
+    window.location.href = 'ar.html';
+}
+
+function closeArabicConfirm() {
+    document.getElementById('arabicConfirmModal').style.display = 'none';
+}
+
+document.getElementById('viewerForm').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+    document.getElementById('viewerModal').style.display = 'none';
+    document.getElementById('mainContent').style.display = 'block';
+});
+
+document.querySelector('.modal-buttons button[data-anonymous="true"]').addEventListener('click', function() {
+    document.getElementById('viewerModal').style.display = 'none';
+    document.getElementById('mainContent').style.display = 'block';
+});
+</script>
+    <script src="core.js"></script>
+    <script src="viewer.js"></script>
+    <script src="msg.js"></script>
+    <script src="language.js"></script>
+    <script src="chat.js"></script>
+    <script src="script.js"></script>
+<script src="chatai.js"></script>
+</body>
+</html>

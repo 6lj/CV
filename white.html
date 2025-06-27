@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed AlAbiya - Full Stack Developer</title>
+    <link rel="stylesheet" href="basic.css">
+    <script src="msg.js"></script>
+    <script src="chatai.js"></script>
+    <script src="cert.js"></script>
+    <script src="chat.js"></script>
+    <script src="viewer.js"></script>
+    <script src="language.js"></script>
+    <script src="core.js"></script>
+</head>
+<body>
+    <div id="viewerModal" style="display: block;">
+        <h2>Welcome!</h2>
+        <p>Please choose how you'd like to appear in the viewers list:</p>
+        <form id="viewerForm">
+            <input type="text" id="viewerName" placeholder="Enter your name">
+            <button type="submit">Submit Name</button>
+            <button type="button" class="modal-btn" data-anonymous="true">Stay Anonymous</button>
+        </form>
+    </div>
+
+    <div id="mainContent" style="display: none;">
+        <header>
+            <h1>Mohamed AlAbiya | Full Stack Developer</h1>
+            <p>This project was built from scratch without third-party services, using backend (SQLite, Node.js, Server, Domain) and frontend (HTML, CSS).</p>
+        </header>
+
+        <section id="viewers">
+            <h2>Viewers</h2>
+            <div id="viewerCount">0</div>
+            <div id="viewerList"></div>
+        </section>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I am Mohamed AlAbiya, aka ENDUP. I hold a Bachelor's degree in Computer Science from National University (NU) in 2025, specializing as a Full Stack Developer. I have launched online stores, modified Android and iPhone applications, and have extensive knowledge in website development. My expertise includes server management, data storage, and data presentation, with a strong algorithmic approach to deliver cost-effective solutions. I am capable of building an efficient online commerce company single-handedly, thanks to my skills in server-side, client-side, backend, and frontend development.</p>
+        </section>
+
+        <section id="skills">
+            <h2>Skill Levels</h2>
+            <ul>
+                <li><strong>Serious:</strong> Perfect proficiency, capable of delivering flawless projects.</li>
+                <li><strong>OK:</strong> Good proficiency, capable of delivering solid projects, but not the best.</li>
+                <li><strong>Not Good:</strong> Still learning, can work with assistance or in a team.</li>
+                <li><strong>Note:</strong> Video editing, Photoshop, English, and similar skills are side skills used in projects but not my specialty, though I have developed serious knowledge in them.</li>
+            </ul>
+            <div class="language-card" data-skill="Serious">
+                <h3 class="language-name">Lua, Android APK Modification</h3>
+                <p>Projects:</p>
+                <ul>
+                    <li>Polywar-GG-1.0.0-lua</li>
+                    <li>Kuboom, Unlock Sabrina And Clown 1.0.0</li>
+                    <li>Bloons TD 6</li>
+                    <li>Kuboom Mod Menu All Versions, V5 | V6</li>
+                    <li>Allocate Memory Script (Write) 1.0.0</li>
+                    <li>Hill Climb Racing 2</li>
+                </ul>
+            </div>
+            <div class="language-card" data-skill="Serious">
+                <h3 class="language-name">Obj-C, iOS IPA Modification</h3>
+                <p>Projects:</p>
+                <ul>
+                    <li>PotatoVPN</li>
+                    <li>GoArt</li>
+                    <li>Meitu</li>
+                </ul>
+            </div>
+            <div class="language-card" data-skill="Serious">
+                <h3 class="language-name">HTML (with CSS)</h3>
+                <p>Projects:</p>
+                <ul>
+                    <li><a href="https://rxoksa.shop/main">RXOstore</a></li>
+                    <li><a href="https://cc.q5.qa">Project-Questions</a></li>
+                    <li><a href="https://q.q5.qa">Quran-Encyclopedia</a></li>
+                    <li>Polywar-Mod-Menu-Website</li>
+                    <li><a href="https://msg.q5.qa">sendmassageandshow</a></li>
+                    <li>Rate-your-doctor</li>
+                    <li><a href="https://q5.qa/t">TV channel</a></li>
+                    <li><a href="https://q5.qa">Social Media Page</a></li>
+                </ul>
+            </div>
+            <div class="language-card" data-skill="Serious">
+                <h3 class="language-name">PHP</h3>
+                <p>Projects:</p>
+                <ul>
+                    <li>Project2-NU-Database-And-php</li>
+                </ul>
+            </div>
+            <div class="language-card" data-skill="Serious">
+                <h3 class="language-name">MySQL</h3>
+                <p>Projects:</p>
+                <ul>
+                    <li>Project2-NU-Database-And-php</li>
+                </ul>
+            </div>
+            <div class="language-card" data-skill="Serious">
+                <h3 class="language-name">Node.js</h3>
+                <p>Projects:</p>
+                <ul>
+                    <li>1day-project</li>
+                    <li><a href="https://msg.q5.qa">sendmassageandshow</a></li>
+                </ul>
+            </div>
+            <div class="language-card" data-skill="Serious">
+                <h3 class="language-name">SQLite</h3>
+                <p>Projects:</p>
+                <ul>
+                    <li>1day-project</li>
+                    <li><a href="https://msg.q5.qa">sendmassageandshow</a></li>
+                </ul>
+            </div>
+            <div class="language-card" data-skill="OK">
+                <h3 class="language-name">React.js</h3>
+                <p>Projects:</p>
+                <ul>
+                    <li>1day-project</li>
+                </ul>
+            </div>
+            <div class="language-card" data-skill="OK">
+                <h3 class="language-name">C++</h3>
+                <p>Note: Used in Android apps via Android Studio NDK (Native Development Kit).</p>
+            </div>
+            <div class="language-card" data-skill="Not Good">
+                <h3 class="language-name">C#</h3>
+                <p>Note: Used for Dump.cs to get offsets for Android app modification (Lua scripts).</p>
+            </div>
+            <div class="language-card" data-skill="OK">
+                <h3 class="language-name">Python</h3>
+                <p>Projects:</p>
+                <ul>
+                    <li>Playlist M3U8</li>
+                </ul>
+            </div>
+            <div class="language-card" data-skill="Serious">
+                <h3 class="language-name">LocalStorage</h3>
+                <p>Projects:</p>
+                <ul>
+                    <li><a href="https://rxoksa.shop/main">RXOstore</a></li>
+                    <li><a href="https://cc.q5.qa">Project-Questions</a></li>
+                    <li><a href="https://q.q5.qa">Quran-Encyclopedia</a></li>
+                    <li>Rate-your-doctor</li>
+                    <li><a href="https://q5.qa/t">TV channel</a></li>
+                </ul>
+            </div>
+            <div class="language-card" data-skill="Serious">
+                <h3 class="language-name">Player (Video, Music, Live)</h3>
+                <p>Projects:</p>
+                <ul>
+                    <li><a href="https://q5.qa/vid">Quran-Encyclopedia</a></li>
+                    <li><a href="https://q5.qa/t">TV channel</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="chat-ai">
+            <h2>Chat with AI</h2>
+            <div class="ai-container">
+                <div id="chatai-messages">
+                    <div class="chatai-message assistant">
+                        <div class="message-bubble">
+                            Hello! I am ENDUP AI. How can I help you today?
+                            <div class="message-timestamp"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="chatai-loading" style="display: none;">Typing...</div>
+                <form id="chatai-form">
+                    <div class="quick-actions">
+                        <button type="button" class="quick-action" data-message="Tell me about AI">AI</button>
+                        <button type="button" class="quick-action" data-message="Explain modern technologies">Modern Technologies</button>
+                        <button type="button" class="quick-action" data-message="Help me solve a problem">Solve a Problem</button>
+                    </div>
+                    <textarea id="chatai-input" placeholder="Type your message..."></textarea>
+                    <button type="submit" id="send-btn">Send</button>
+                    <button type="button" id="clear-chat">Clear Chat</button>
+                    <button type="button" id="settings-btn">Settings</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="live-chat">
+            <h2>Live Chat</h2>
+            <form id="chatForm">
+                <select id="chatRecipient" disabled>
+                    <option value="all" selected>All</option>
+                </select>
+                <textarea id="chatMessage" placeholder="Type your message..."></textarea>
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text">Send</span>
+                    <span class="loading" style="display: none;">Sending...</span>
+                    <span class="success-message" style="display: none;">Message sent!</span>
+                </button>
+            </form>
+            <div id="chatMessages"></div>
+        </section>
+
+        <section id="certificates">
+            <h2>Certificates</h2>
+            <div class="certificate-card" data-cert-type="Professional">
+                <h3 class="certificate-name">Full Stack Web Development</h3>
+                <p>Certified in advanced web development techniques, covering both frontend and backend technologies.</p>
+            </div>
+            <div class="certificate-card" data-cert-type="University">
+                <h3 class="certificate-name">Bachelor’s in Computer Science</h3>
+                <p>Earned from National University (NU) in 2025, specializing in software engineering and algorithms.</p>
+            </div>
+            <div class="certificate-card" data-cert-type="Secondary">
+                <h3 class="certificate-name">High School Diploma</h3>
+                <p>Completed secondary education with a focus on mathematics and sciences.</p>
+            </div>
+            <div class="certificate-card" data-cert-type="Qiyas">
+                <h3 class="certificate-name">Qiyas Standardized Test</h3>
+                <p>Achieved certification in Saudi Arabia’s standardized test for academic aptitude.</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <form id="contactForm">
+                <input type="text" id="username" placeholder="Username">
+                <textarea id="message" placeholder="Message"></textarea>
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text">Send Message</span>
+                    <span class="loading" style="display: none;">Sending...</span>
+                    <span class="success-message" style="display: none;">Message sent successfully!</span>
+                </button>
+                <p>If you want me to reach you, please provide any method of communication.</p>
+            </form>
+        </section>
+    </div>
+
+    <div class="particles"></div>
+    <div class="scroll-indicator"></div>
+</body>
+</html>

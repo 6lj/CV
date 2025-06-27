@@ -1,0 +1,37 @@
+.personal-info {
+    animation-delay: 0.5s;
+    text-align: center;
+}
+
+.profile-section {
+    margin-bottom: 40px;
+    
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(45deg, var(--primary-green), var(--primary-orange));
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--bg-primary);
+    box-shadow: 0 0 40px rgba(0, 255, 136, 0.4);
+    animation: profileGlow 3s ease-in-out infinite;
+}
+
+@keyframes profileGlow {
+    0%, 100% { box-shadow: 0 0 40px rgba(0, 255, 136, 0.4); }
+    50% { box-shadow: 0 0 60px rgba(255, 107, 53, 0.6); }
+}
+
+.personal-text {
+    font-size: 1.3rem;
+    direction: rtl;
+    color: var(--text-primary);
+    font-weight: 500;
+}
