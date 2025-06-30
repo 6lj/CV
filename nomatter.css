@@ -1,10 +1,4 @@
-Of course. Based on your detailed request to rearrange the layout and minimize the spacing between elements, the CSS has been updated.
 
-The changes ensure that the "Viewers" and "Certificates" sections are on the left, "Personal Info" is in the center, and "Skills" are on the right. Below these, the "Live Chat," "AI Chat," and "Contact Form" sections are now stacked centrally, spanning the full width of the container. The `gap` between all grid items has been reduced, and extra margins have been removed to make the layout much tighter, as you specified.
-
-Here is the updated CSS code reflecting your requirements.
-
-```css
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 * {
@@ -1171,4 +1165,3 @@ body[dir="rtl"] .form-textarea {
         padding: 4px 6px;
     }
 }
-```
