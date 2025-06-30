@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 * {
@@ -86,14 +85,17 @@ body[dir="rtl"] .form-textarea {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 15px; /* Reduced padding */
+    padding: 30px 20px;
     position: relative;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .header {
     text-align: center;
-    margin-bottom: 20px; /* Reduced margin */
+    margin-bottom: 30px;
     opacity: 0;
     animation: fadeInUp 1s ease-out 0.2s forwards;
 }
@@ -118,8 +120,8 @@ body[dir="rtl"] .form-textarea {
 
 .main-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px; /* Reduced gap for tighter layout */
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
     align-items: start;
 }
 
@@ -133,7 +135,6 @@ body[dir="rtl"] .form-textarea {
     transition: all 0.3s ease;
     opacity: 0;
     animation: fadeInUp 0.8s ease-out forwards;
-    height: 100%; /* Make cards fill grid cell height */
 }
 
 .glass-card:hover {
@@ -296,54 +297,11 @@ body[dir="rtl"] .form-textarea {
     height: 90px;
 }
 
-/* --- GRID LAYOUT UPDATES --- */
-
 .viewers-section {
     animation-delay: 0.2s;
     grid-column: 1;
     grid-row: 1;
 }
-
-.personal-info {
-    animation-delay: 0.4s;
-    grid-column: 2;
-    grid-row: 1 / span 2; /* Span 2 rows to be in middle */
-    text-align: center;
-}
-
-.languages-section {
-    animation-delay: 0.6s;
-    grid-column: 3;
-    grid-row: 1 / span 2; /* Span 2 rows to match personal-info */
-}
-
-.certificate-section {
-    animation-delay: 0.8s;
-    grid-column: 1;
-    grid-row: 2;
-}
-
-.chat-section {
-    animation-delay: 1s;
-    grid-column: 1 / -1; /* Span all 3 columns */
-    grid-row: 3;
-    margin: 0; /* Remove extra margin */
-    max-width: none; /* Remove max-width to fill grid */
-}
-
-.chat-container {
-    grid-column: 1 / -1; /* Span all 3 columns */
-    grid-row: 4;
-}
-
-.contact-form {
-    animation-delay: 1.4s;
-    grid-column: 1 / -1; /* Span all 3 columns */
-    grid-row: 5;
-    margin: 0; /* Remove extra margin */
-    max-width: none; /* Remove max-width to fill grid */
-}
-
 
 .viewers-content {
     text-align: center;
@@ -405,6 +363,13 @@ body[dir="rtl"] .form-textarea {
     100% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.5; }
 }
 
+.personal-info {
+    animation-delay: 0.4s;
+    grid-column: 2;
+    grid-row: 1 / 3;
+    text-align: center;
+}
+
 .profile-section {
     margin-bottom: 20px;
 }
@@ -440,6 +405,12 @@ body[dir="rtl"] .form-textarea {
     color: var(--text-primary);
     font-weight: 400;
     line-height: 1.5;
+}
+
+.languages-section {
+    animation-delay: 0.6s;
+    grid-column: 3;
+    grid-row: 1 / 3;
 }
 
 .skill-legend {
@@ -579,6 +550,12 @@ body[dir="rtl"] .form-textarea {
     text-decoration: underline;
 }
 
+.certificate-section {
+    animation-delay: 0.8s;
+    grid-column: 1;
+    grid-row: 2;
+}
+
 .certificate-title {
     font-size: 1.2rem;
     font-weight: 600;
@@ -618,6 +595,27 @@ body[dir="rtl"] .form-textarea {
 .certificate-card a:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-glow);
+}
+
+.chat-section {
+    max-width: 600px; /* already present */
+    margin: 20px auto; /* already present */
+    animation-delay: 1s; /* already present */
+    /* Add this if you want them to behave like glass cards for consistency in appearance */
+    background: var(--bg-card);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--border-primary);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 1s forwards; /* Adjust animation delay */
+}
+
+.chat-section:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-glow);
+    border-color: var(--primary-green);
 }
 
 .chat-title {
@@ -696,8 +694,8 @@ body[dir="rtl"] .form-textarea {
 }
 
 .chat-container .chatai-glass-card {
-    max-width: none; /* Removed max-width */
-    margin: 0; /* Removed margin */
+    max-width: 600px;
+    margin: 20px auto;
     background: var(--bg-card);
     backdrop-filter: blur(15px);
     border: 1px solid var(--border-primary);
@@ -705,7 +703,6 @@ body[dir="rtl"] .form-textarea {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
     animation-delay: 1.2s;
-    height: 100%;
 }
 
 .chat-container .chatai-glass-card:hover {
@@ -1032,6 +1029,26 @@ body[dir="rtl"] .form-textarea {
     transform: translateY(-1px);
 }
 
+.contact-form {
+    max-width: 600px; /* already present */
+    margin: 20px auto; /* already present */
+    animation-delay: 1.4s; /* already present */
+    /* Add this if you want them to behave like glass cards for consistency in appearance */
+    background: var(--bg-card);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--border-primary);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 1.4s forwards; /* Adjust animation delay */
+}
+
+.contact-form:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-glow);
+    border-color: var(--primary-green);
+}
 .submit-section {
     text-align: center;
     margin-top: 20px;
@@ -1090,23 +1107,14 @@ body[dir="rtl"] .form-textarea {
     text-decoration: underline;
 }
 
-/* --- RESPONSIVE UPDATES --- */
-
 @media (max-width: 1024px) {
     .main-grid {
-        grid-template-columns: 1fr; /* Single column on tablets and smaller */
+        grid-template-columns: 1fr;
         grid-template-rows: auto;
         gap: 15px;
     }
 
-    /* Reset all grid items to flow in a single column */
-    .viewers-section,
-    .certificate-section,
-    .personal-info,
-    .languages-section,
-    .chat-section,
-    .chat-container,
-    .contact-form {
+    .viewers-section, .certificate-section, .personal-info, .languages-section {
         grid-column: 1;
         grid-row: auto;
     }
