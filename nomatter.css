@@ -121,7 +121,8 @@ body[dir="rtl"] .form-textarea {
 .main-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
+    grid-auto-rows: auto;
+    gap: 15px; 
     align-items: start;
 }
 
@@ -238,6 +239,7 @@ body[dir="rtl"] .form-textarea {
     display: flex;
     gap: 6px;
 }
+
 .lang-btn {
     padding: 5px 10px;
     border: none;
@@ -297,15 +299,47 @@ body[dir="rtl"] .form-textarea {
     height: 90px;
 }
 
+/* --- NEW GRID LAYOUT --- */
 .viewers-section {
-    animation-delay: 0.2s;
     grid-column: 1;
     grid-row: 1;
 }
 
+.certificate-section {
+    grid-column: 1;
+    grid-row: 2;
+    margin-top: -355px; 
+}
+
+.personal-info {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.chat-section {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.chat-container {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.contact-form {
+    grid-column: 2;
+    grid-row: 4;
+}
+
+.languages-section {
+    grid-column: 3;
+    grid-row: 1 / 5;
+}
+/* --- END NEW GRID LAYOUT --- */
+
+
 .viewers-content {
     text-align: center;
-    min-height: 150px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -363,13 +397,6 @@ body[dir="rtl"] .form-textarea {
     100% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.5; }
 }
 
-.personal-info {
-    animation-delay: 0.4s;
-    grid-column: 2;
-    grid-row: 1 / 3;
-    text-align: center;
-}
-
 .profile-section {
     margin-bottom: 20px;
 }
@@ -405,12 +432,6 @@ body[dir="rtl"] .form-textarea {
     color: var(--text-primary);
     font-weight: 400;
     line-height: 1.5;
-}
-
-.languages-section {
-    animation-delay: 0.6s;
-    grid-column: 3;
-    grid-row: 1 / 3;
 }
 
 .skill-legend {
@@ -550,12 +571,6 @@ body[dir="rtl"] .form-textarea {
     text-decoration: underline;
 }
 
-.certificate-section {
-    animation-delay: 0.8s;
-    grid-column: 1;
-    grid-row: 2;
-}
-
 .certificate-title {
     font-size: 1.2rem;
     font-weight: 600;
@@ -595,27 +610,6 @@ body[dir="rtl"] .form-textarea {
 .certificate-card a:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-glow);
-}
-
-.chat-section {
-    max-width: 600px; /* already present */
-    margin: 20px auto; /* already present */
-    animation-delay: 1s; /* already present */
-    /* Add this if you want them to behave like glass cards for consistency in appearance */
-    background: var(--bg-card);
-    backdrop-filter: blur(15px);
-    border: 1px solid var(--border-primary);
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    opacity: 0;
-    animation: fadeInUp 0.8s ease-out 1s forwards; /* Adjust animation delay */
-}
-
-.chat-section:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-glow);
-    border-color: var(--primary-green);
 }
 
 .chat-title {
@@ -693,9 +687,7 @@ body[dir="rtl"] .form-textarea {
     background: var(--bg-card);
 }
 
-.chat-container .chatai-glass-card {
-    max-width: 600px;
-    margin: 20px auto;
+.chatai-glass-card {
     background: var(--bg-card);
     backdrop-filter: blur(15px);
     border: 1px solid var(--border-primary);
@@ -703,14 +695,15 @@ body[dir="rtl"] .form-textarea {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
     animation-delay: 1.2s;
+    position: relative;
 }
 
-.chat-container .chatai-glass-card:hover {
+.chatai-glass-card:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-glow);
 }
 
-.chat-container .chatai-glass-card::before {
+.chatai-glass-card::before {
     content: '';
     position: absolute;
     top: 0;
@@ -721,7 +714,7 @@ body[dir="rtl"] .form-textarea {
     opacity: 0.7;
 }
 
-.chat-container .chat-header {
+.chat-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -730,13 +723,13 @@ body[dir="rtl"] .form-textarea {
     background: var(--bg-card);
 }
 
-.chat-container .chat-status {
+.chat-status {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.chat-container .status-indicator {
+.status-indicator {
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -745,19 +738,19 @@ body[dir="rtl"] .form-textarea {
     animation: pulse 2s infinite;
 }
 
-.chat-container .chat-header h2 {
+.chat-header h2 {
     color: var(--text-primary);
     font-size: 1rem;
     font-weight: 600;
     margin: 0;
 }
 
-.chat-container .chat-actions {
+.chat-actions {
     display: flex;
     gap: 5px;
 }
 
-.chat-container .action-btn {
+.action-btn {
     background: var(--bg-card);
     border: 1px solid var(--border-primary);
     color: var(--text-secondary);
@@ -770,21 +763,21 @@ body[dir="rtl"] .form-textarea {
     justify-content: center;
 }
 
-.chat-container .action-btn:hover {
+.action-btn:hover {
     background: rgba(0, 255, 136, 0.1);
     color: var(--text-primary);
     border-color: var(--primary-green);
     transform: translateY(-1px);
 }
 
-.chat-container .chatai-container {
+.chatai-container {
     display: flex;
     flex-direction: column;
     height: 450px;
     max-height: 60vh;
 }
 
-.chat-container .chatai-messages {
+.chatai-messages {
     flex: 1;
     overflow-y: auto;
     padding: 16px;
@@ -793,21 +786,21 @@ body[dir="rtl"] .form-textarea {
     scrollbar-color: var(--primary-green) transparent;
 }
 
-.chat-container .chatai-messages::-webkit-scrollbar {
+.chatai-messages::-webkit-scrollbar {
     width: 4px;
 }
 
-.chat-container .chatai-messages::-webkit-scrollbar-track {
+.chatai-messages::-webkit-scrollbar-track {
     background: transparent;
 }
 
-.chat-container .chatai-messages::-webkit-scrollbar-thumb {
+.chatai-messages::-webkit-scrollbar-thumb {
     background: var(--primary-green);
     border-radius: 2px;
     opacity: 0.4;
 }
 
-.chat-container .welcome-message {
+.welcome-message {
     display: flex;
     align-items: flex-start;
     gap: 8px;
@@ -818,7 +811,7 @@ body[dir="rtl"] .form-textarea {
     border-left: 2px solid var(--primary-green);
 }
 
-.chat-container .ai-avatar {
+.ai-avatar {
     font-size: 18px;
     width: 28px;
     height: 28px;
@@ -830,14 +823,14 @@ body[dir="rtl"] .form-textarea {
     flex-shrink: 0;
 }
 
-.chat-container .message-content p {
+.message-content p {
     color: var(--text-primary);
     margin: 0;
     line-height: 1.4;
     font-size: 0.85rem;
 }
 
-.chat-container .chatai-message {
+.chatai-message {
     margin: 10px 0;
     display: flex;
     align-items: flex-start;
@@ -850,16 +843,16 @@ body[dir="rtl"] .form-textarea {
     to { opacity: 1; transform: translateY(0); }
 }
 
-.chat-container .chatai-message.user {
+.chatai-message.user {
     flex-direction: row-reverse;
     justify-content: flex-start;
 }
 
-.chat-container .chatai-message.assistant {
+.chatai-message.assistant {
     flex-direction: row;
 }
 
-.chat-container .message-bubble {
+.message-bubble {
     max-width: 70%;
     padding: 10px 14px;
     border-radius: 12px;
@@ -868,14 +861,14 @@ body[dir="rtl"] .form-textarea {
     font-size: 0.8rem;
 }
 
-.chat-container .chatai-message.user .message-bubble {
+.chatai-message.user .message-bubble {
     background: linear-gradient(135deg, var(--primary-green), var(--primary-orange));
     color: var(--bg-primary);
     border-bottom-right-radius: 3px;
     box-shadow: 0 2px 8px rgba(0, 255, 136, 0.2);
 }
 
-.chat-container .chatai-message.assistant .message-bubble {
+.chatai-message.assistant .message-bubble {
     background: var(--bg-card);
     color: var(--text-primary);
     border: 1px solid var(--border-primary);
@@ -883,21 +876,21 @@ body[dir="rtl"] .form-textarea {
     backdrop-filter: blur(10px);
 }
 
-.chat-container .message-timestamp {
+.message-timestamp {
     font-size: 0.65rem;
     color: var(--text-secondary);
     margin-top: 2px;
     text-align: center;
 }
 
-.chat-container .chatai-loading {
+.chatai-loading {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
 }
 
-.chat-container .typing-indicator {
+.typing-indicator {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -907,12 +900,12 @@ body[dir="rtl"] .form-textarea {
     border: 1px solid var(--border-primary);
 }
 
-.chat-container .typing-dots {
+.typing-dots {
     display: flex;
     gap: 2px;
 }
 
-.chat-container .dot {
+.dot {
     width: 4px;
     height: 4px;
     border-radius: 50%;
@@ -920,11 +913,11 @@ body[dir="rtl"] .form-textarea {
     animation: typing 1s infinite;
 }
 
-.chat-container .dot:nth-child(2) {
+.dot:nth-child(2) {
     animation-delay: 0.1s;
 }
 
-.chat-container .dot:nth-child(3) {
+.dot:nth-child(3) {
     animation-delay: 0.2s;
 }
 
@@ -933,18 +926,18 @@ body[dir="rtl"] .form-textarea {
     30% { transform: translateY(-6px); opacity: 1; }
 }
 
-.chat-container .typing-text {
+.typing-text {
     font-size: 0.75rem;
     color: var(--text-secondary);
 }
 
-.chat-container .chatai-form {
+.chatai-form {
     padding: 16px;
     border-top: 1px solid var(--border-primary);
     background: var(--bg-card);
 }
 
-.chat-container .input-container {
+.input-container {
     display: flex;
     align-items: center;
     background: var(--bg-card);
@@ -955,12 +948,12 @@ body[dir="rtl"] .form-textarea {
     transition: all 0.2s ease;
 }
 
-.chat-container .input-container:focus-within {
+.input-container:focus-within {
     border-color: var(--primary-green);
     box-shadow: 0 0 0 2px rgba(0, 255, 136, 0.2);
 }
 
-.chat-container .chatai-input {
+.chatai-input {
     background: transparent;
     color: var(--text-primary);
     border: none;
@@ -970,15 +963,15 @@ body[dir="rtl"] .form-textarea {
     font-family: inherit;
 }
 
-.chat-container .chatai-input::placeholder {
+.chatai-input::placeholder {
     color: var(--text-secondary);
 }
 
-.chat-container .chatai-input:focus {
+.chatai-input:focus {
     outline: none;
 }
 
-.chat-container .chatai-submit {
+.chatai-submit {
     background: linear-gradient(135deg, var(--primary-green), var(--primary-orange));
     border: none;
     padding: 8px;
@@ -991,27 +984,27 @@ body[dir="rtl"] .form-textarea {
     margin-right: 3px;
 }
 
-.chat-container .chatai-submit:hover {
+.chatai-submit:hover {
     transform: scale(1.03);
     box-shadow: 0 2px 8px rgba(0, 255, 136, 0.2);
 }
 
-.chat-container .chatai-submit:active {
+.chatai-submit:active {
     transform: scale(0.98);
 }
 
-.chat-container .send-icon {
+.send-icon {
     stroke: var(--bg-primary);
     stroke-width: 2;
 }
 
-.chat-container .input-actions {
+.input-actions {
     display: flex;
     gap: 5px;
     flex-wrap: wrap;
 }
 
-.chat-container .quick-action {
+.quick-action {
     background: var(--bg-card);
     border: 1px solid var(--border-primary);
     color: var(--text-secondary);
@@ -1022,33 +1015,13 @@ body[dir="rtl"] .form-textarea {
     transition: all 0.2s ease;
 }
 
-.chat-container .quick-action:hover {
+.quick-action:hover {
     background: rgba(0, 255, 136, 0.1);
     color: var(--primary-green);
     border-color: var(--primary-green);
     transform: translateY(-1px);
 }
 
-.contact-form {
-    max-width: 600px; /* already present */
-    margin: 20px auto; /* already present */
-    animation-delay: 1.4s; /* already present */
-    /* Add this if you want them to behave like glass cards for consistency in appearance */
-    background: var(--bg-card);
-    backdrop-filter: blur(15px);
-    border: 1px solid var(--border-primary);
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    opacity: 0;
-    animation: fadeInUp 0.8s ease-out 1.4s forwards; /* Adjust animation delay */
-}
-
-.contact-form:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-glow);
-    border-color: var(--primary-green);
-}
 .submit-section {
     text-align: center;
     margin-top: 20px;
@@ -1111,17 +1084,17 @@ body[dir="rtl"] .form-textarea {
     .main-grid {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
-        gap: 15px;
     }
 
-    .viewers-section, .certificate-section, .personal-info, .languages-section {
-        grid-column: 1;
-        grid-row: auto;
-    }
-
-    .glass-card, .chat-section, .contact-form, .chat-container .chatai-glass-card {
+    .glass-card, .chat-section, .contact-form, .chatai-glass-card {
+        grid-column: 1 !important;
+        grid-row: auto !important;
         max-width: 100%;
         margin: 0;
+    }
+
+    .languages-section {
+        grid-row: auto !important;
     }
 
     .viewer-list, .personal-text, .chat-messages {
@@ -1146,29 +1119,29 @@ body[dir="rtl"] .form-textarea {
         padding: 12px;
     }
 
-    .chat-container .chatai-container {
+    .chatai-container {
         height: 350px;
     }
 
-    .chat-container .chatai-messages {
+    .chatai-messages {
         padding: 10px;
     }
 
-    .chat-container .message-bubble {
+    .message-bubble {
         max-width: 80%;
         padding: 8px 12px;
         font-size: 0.75rem;
     }
 
-    .chat-container .chat-header {
+    .chat-header {
         padding: 10px 12px;
     }
 
-    .chat-container .chatai-form {
+    .chatai-form {
         padding: 10px;
     }
 
-    .chat-container .quick-action {
+    .quick-action {
         font-size: 0.7rem;
         padding: 4px 6px;
     }
