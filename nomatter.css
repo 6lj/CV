@@ -1146,3 +1146,84 @@ body[dir="rtl"] .form-textarea {
         padding: 4px 6px;
     }
 }
+@media (max-width: 1024px) {
+    .main-grid {
+        grid-template-columns: 1fr; /* عمود واحد كأساسي */
+        grid-auto-rows: auto;
+        gap: 15px;
+    }
+
+    /* إعادة ترتيب العناصر يدويًا إذا لزم الأمر */
+    .viewers-section {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .certificate-section {
+        grid-column: 1;
+        grid-row: 2;
+        margin-top: 0; /* إزالة المسافة السلبية */
+    }
+
+    .personal-info {
+        grid-column: 1;
+        grid-row: 3;
+    }
+
+    .chat-section {
+        grid-column: 1;
+        grid-row: 4;
+    }
+
+    .chat-container {
+        grid-column: 1;
+        grid-row: 5;
+    }
+
+    .contact-form {
+        grid-column: 1;
+        grid-row: 6;
+    }
+
+    .languages-section {
+        grid-column: 1;
+        grid-row: 7 / span 1; /* اجعل قسم المهارات في الأسفل */
+    }
+
+    .glass-card, .chat-section, .contact-form, .chatai-glass-card {
+        max-width: 100%;
+        margin: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px 10px;
+    }
+
+    .main-title {
+        font-size: 1.6rem;
+    }
+
+    .subtitle {
+        font-size: 0.85rem;
+    }
+
+    .glass-card {
+        padding: 12px;
+    }
+
+    .chatai-container {
+        height: 300px; 
+    }
+
+    .chatai-messages {
+        padding: 10px;
+    }
+
+    .message-bubble {
+        max-width: 85%;
+        padding: 6px 10px;
+        font-size: 0.75rem;
+    }
+}
