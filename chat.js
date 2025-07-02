@@ -13,12 +13,19 @@ function setupLiveChat() {
         chatRecipient.disabled = true; 
     }
 
+    function forceScrollToBottom() {
+
+        setTimeout(() => {
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }, 100); 
+    }
+
     function updateChatMessages() {
         const currentViewer = localStorage.getItem('currentViewer') || 'Anonymous';
         fetch('/api/chat-messages')
             .then(response => response.json())
             .then(data => {
-                chatMessages.innerHTML = '';
+                chatMessages.innerHTML = ''; 
 
                 data.messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
                 data.messages.forEach(msg => {
@@ -32,11 +39,12 @@ function setupLiveChat() {
                     `;
                     chatMessages.appendChild(messageElement);
                 });
-                chatMessages.scrollTop = chatMessages.scrollHeight; 
+
+                forceScrollToBottom(); 
             })
             .catch(err => {
                 console.error(err);
-                showNotification('Failed to fetch messages', 'error');
+
             });
     }
 
@@ -46,7 +54,7 @@ function setupLiveChat() {
         const currentViewer = localStorage.getItem('currentViewer') || 'Anonymous';
 
         if (!text) {
-            showNotification('Please enter a message', 'error');
+
             return;
         }
 
@@ -54,34 +62,42 @@ function setupLiveChat() {
         loading.style.display = 'block';
         submitBtn.disabled = true;
 
-        fetch('/api/chat-messages', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ sender: currentViewer, text, recipient: 'all' }) 
-        })
-            .then(response => response.json())
-            .then(data => {
-                loading.style.display = 'none';
-                successMessage.style.display = 'block';
-                chatForm.reset();
-                updateChatMessages();
-                setTimeout(() => {
-                    btnText.style.opacity = '1';
-                    submitBtn.disabled = false;
-                    successMessage.style.display = 'none';
-                }, 2000);
-            })
-            .catch(err => {
-                console.error(err);
-                showNotification('Failed to send message', 'error');
+        try {
+            const response = await fetch('/api/chat-messages', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ sender: currentViewer, text, recipient: 'all' })
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to send message');
+            }
+
+            const data = await response.json(); 
+
+            loading.style.display = 'none';
+            successMessage.style.display = 'block';
+            chatForm.reset();
+
+            updateChatMessages(); 
+
+            setTimeout(() => {
                 btnText.style.opacity = '1';
                 submitBtn.disabled = false;
-                loading.style.display = 'none';
-            });
+                successMessage.style.display = 'none';
+            }, 2000);
+
+        } catch (err) {
+            console.error(err);
+
+            btnText.style.opacity = '1';
+            submitBtn.disabled = false;
+            loading.style.display = 'none';
+        }
     });
 
     updateRecipientList();
-    updateChatMessages();
+    updateChatMessages(); 
 
     setInterval(updateChatMessages, 1000);
 }
