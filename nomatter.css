@@ -635,6 +635,7 @@ body[dir="rtl"] .form-textarea {
     display: flex;
     flex-direction: column;
     justify-content: flex-end; 
+    scroll-behavior: smooth;
 }
 .chat-message {
     display: flex;
