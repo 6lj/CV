@@ -13,12 +13,13 @@ function setupLiveChat() {
         chatRecipient.disabled = true; 
     }
 
-    function forceScrollToBottom() {
+  function forceScrollToBottom() {
+    setTimeout(() => {
+        chatMessages.scrollTop = chatMessages.scrollHeight - chatMessages.clientHeight;
 
-        setTimeout(() => {
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }, 100); 
-    }
+        chatMessages.scrollTo({ top: chatMessages.scrollHeight, behavior: 'smooth' });
+    }, 100);
+}
 
 function updateChatMessages() {
     const currentViewer = localStorage.getItem('currentViewer') || 'Anonymous';
@@ -28,7 +29,6 @@ function updateChatMessages() {
             chatMessages.innerHTML = ''; 
 
             data.messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
-
             data.messages.reverse().forEach(msg => {
                 const messageElement = document.createElement('div');
                 messageElement.className = `chat-message ${msg.sender === currentViewer ? 'sent' : 'received'}`;
