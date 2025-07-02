@@ -648,7 +648,10 @@ body[dir="rtl"] .form-textarea {
     height: -webkit-fill-available; 
     
     height: 100%; 
-    
+        
+    flex-grow: 1; 
+    flex-shrink: 1; 
+    flex-basis: auto; 
 }
 
 .chat-message {
