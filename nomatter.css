@@ -632,13 +632,8 @@ body[dir="rtl"] .form-textarea {
     background: var(--bg-card);
     border: 1px solid var(--border-primary);
     border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    -webkit-overflow-scrolling: touch; 
-    min-height: 100px; 
     box-sizing: border-box;
-        scroll-behavior: smooth;
+    display: flex; 
 }
 
 
