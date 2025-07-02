@@ -8,45 +8,63 @@ function setupLiveChat() {
     const loading = chatForm.querySelector('.loading');
     const successMessage = chatForm.querySelector('.success-message');
 
-    function updateRecipientList() {
-        chatRecipient.innerHTML = '<option value="all" selected>All</option>';
-        chatRecipient.disabled = true; 
+    function isAppleDevice() {
+        const userAgent = navigator.userAgent.toLowerCase();
+        return /macintosh|iphone|ipad|ipod/.test(userAgent);
     }
 
-  function forceScrollToBottom() {
-    setTimeout(() => {
-        chatMessages.scrollTop = chatMessages.scrollHeight - chatMessages.clientHeight;
+    function updateRecipientList() {
+        chatRecipient.innerHTML = '<option value="all" selected>All</option>';
+        chatRecipient.disabled = true;
+    }
 
-        chatMessages.scrollTo({ top: chatMessages.scrollHeight, behavior: 'smooth' });
-    }, 100);
-}
+    function forceScroll() {
+        setTimeout(() => {
+            if (isAppleDevice()) {
 
-function updateChatMessages() {
-    const currentViewer = localStorage.getItem('currentViewer') || 'Anonymous';
-    fetch('/api/chat-messages')
-        .then(response => response.json())
-        .then(data => {
-            chatMessages.innerHTML = ''; 
+                chatMessages.scrollTop = chatMessages.scrollHeight - chatMessages.clientHeight;
+                chatMessages.scrollTo({ top: chatMessages.scrollHeight, behavior: 'smooth' });
+            } else {
 
-            data.messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
-            data.messages.reverse().forEach(msg => {
-                const messageElement = document.createElement('div');
-                messageElement.className = `chat-message ${msg.sender === currentViewer ? 'sent' : 'received'}`;
-                const recipientText = msg.recipient !== 'all' ? `(to ${msg.recipient})` : '';
-                messageElement.innerHTML = `
-                    <span class="chat-sender">${msg.sender} ${recipientText}</span>
-                    <span class="chat-text">${msg.text}</span>
-                    <span class="chat-timestamp">${new Date(msg.timestamp).toLocaleTimeString()}</span>
-                `;
-                chatMessages.appendChild(messageElement);
+                chatMessages.scrollTop = 0;
+                chatMessages.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }, 100);
+    }
+
+    function updateChatMessages() {
+        const currentViewer = localStorage.getItem('currentViewer') || 'Anonymous';
+        fetch('/api/chat-messages')
+            .then(response => response.json())
+            .then(data => {
+                chatMessages.innerHTML = '';
+
+                if (isAppleDevice()) {
+
+                    data.messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+                } else {
+
+                    data.messages.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                }
+
+                data.messages.forEach(msg => {
+                    const messageElement = document.createElement('div');
+                    messageElement.className = `chat-message ${msg.sender === currentViewer ? 'sent' : 'received'}`;
+                    const recipientText = msg.recipient !== 'all' ? `(to ${msg.recipient})` : '';
+                    messageElement.innerHTML = `
+                        <span class="chat-sender">${msg.sender} ${recipientText}</span>
+                        <span class="chat-text">${msg.text}</span>
+                        <span class="chat-timestamp">${new Date(msg.timestamp).toLocaleTimeString()}</span>
+                    `;
+                    chatMessages.appendChild(messageElement);
+                });
+
+                forceScroll();
+            })
+            .catch(err => {
+                console.error(err);
             });
-
-            forceScrollToBottom(); 
-        })
-        .catch(err => {
-            console.error(err);
-        });
-}
+    }
 
     chatForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -54,7 +72,6 @@ function updateChatMessages() {
         const currentViewer = localStorage.getItem('currentViewer') || 'Anonymous';
 
         if (!text) {
-
             return;
         }
 
@@ -73,13 +90,13 @@ function updateChatMessages() {
                 throw new Error('Failed to send message');
             }
 
-            const data = await response.json(); 
+            const data = await response.json();
 
             loading.style.display = 'none';
             successMessage.style.display = 'block';
             chatForm.reset();
 
-            updateChatMessages(); 
+            updateChatMessages();
 
             setTimeout(() => {
                 btnText.style.opacity = '1';
@@ -89,7 +106,6 @@ function updateChatMessages() {
 
         } catch (err) {
             console.error(err);
-
             btnText.style.opacity = '1';
             submitBtn.disabled = false;
             loading.style.display = 'none';
@@ -97,7 +113,7 @@ function updateChatMessages() {
     });
 
     updateRecipientList();
-    updateChatMessages(); 
+    updateChatMessages();
 
     setInterval(updateChatMessages, 1000);
 }
