@@ -22,13 +22,13 @@ function setupLiveChat() {
     function forceScroll() {
         setTimeout(() => {
             if (isAppleDevice()) {
-                // Apple: Latest message at bottom (original behavior)
-                chatMessages.scrollTop = chatMessages.scrollHeight - chatMessages.clientHeight;
-                chatMessages.scrollTo({ top: chatMessages.scrollHeight, behavior: 'smooth' });
-            } else {
-                // Windows/Android: Latest message at top
+                // iPhone/Mac: Latest message at top
                 chatMessages.scrollTop = 0;
                 chatMessages.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                // Windows/Android: Latest message at bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight - chatMessages.clientHeight;
+                chatMessages.scrollTo({ top: chatMessages.scrollHeight, behavior: 'smooth' });
             }
         }, 100);
     }
@@ -41,12 +41,13 @@ function setupLiveChat() {
                 chatMessages.innerHTML = '';
 
                 // Sort messages
-                data.messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
-                if (!isAppleDevice()) {
-                    // Windows/Android: Reverse to show latest at top
-                    data.messages.reverse();
+                if (isAppleDevice()) {
+                    // iPhone/Mac: Latest at top (newest first)
+                    data.messages.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                } else {
+                    // Windows/Android: Latest at bottom (oldest first)
+                    data.messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
                 }
-                // For Apple devices, keep original order (latest at bottom, no reverse)
 
                 data.messages.forEach(msg => {
                     const messageElement = document.createElement('div');
@@ -113,9 +114,9 @@ function setupLiveChat() {
         }
     });
 
-    // Add class for non-Apple devices to handle CSS
-    if (!isAppleDevice()) {
-        chatMessages.classList.add('non-apple-device');
+    // Add class for Apple devices to handle CSS
+    if (isAppleDevice()) {
+        chatMessages.classList.add('apple-device');
     }
 
     updateRecipientList();
