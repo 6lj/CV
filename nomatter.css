@@ -636,15 +636,10 @@ body[dir="rtl"] .form-textarea {
     display: flex;
     flex-direction: column;
     scroll-behavior: smooth;
+}
 
-}
-@media not (pointer: none) {
-    .chat-messages:not(.apple-device) {
-        flex-direction: column-reverse; 
-    }
-}
 .chat-messages.non-apple-device {
-    flex-direction: column-reverse;
+    flex-direction: column-reverse; 
 }
 .chat-message {
     display: flex;
