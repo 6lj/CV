@@ -20,33 +20,33 @@ function setupLiveChat() {
         }, 100); 
     }
 
-    function updateChatMessages() {
-        const currentViewer = localStorage.getItem('currentViewer') || 'Anonymous';
-        fetch('/api/chat-messages')
-            .then(response => response.json())
-            .then(data => {
-                chatMessages.innerHTML = ''; 
+function updateChatMessages() {
+    const currentViewer = localStorage.getItem('currentViewer') || 'Anonymous';
+    fetch('/api/chat-messages')
+        .then(response => response.json())
+        .then(data => {
+            chatMessages.innerHTML = ''; 
 
-                data.messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
-                data.messages.forEach(msg => {
-                    const messageElement = document.createElement('div');
-                    messageElement.className = `chat-message ${msg.sender === currentViewer ? 'sent' : 'received'}`;
-                    const recipientText = msg.recipient !== 'all' ? `(to ${msg.recipient})` : '';
-                    messageElement.innerHTML = `
-                        <span class="chat-sender">${msg.sender} ${recipientText}</span>
-                        <span class="chat-text">${msg.text}</span>
-                        <span class="chat-timestamp">${new Date(msg.timestamp).toLocaleTimeString()}</span>
-                    `;
-                    chatMessages.appendChild(messageElement);
-                });
+            data.messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
 
-                forceScrollToBottom(); 
-            })
-            .catch(err => {
-                console.error(err);
-
+            data.messages.reverse().forEach(msg => {
+                const messageElement = document.createElement('div');
+                messageElement.className = `chat-message ${msg.sender === currentViewer ? 'sent' : 'received'}`;
+                const recipientText = msg.recipient !== 'all' ? `(to ${msg.recipient})` : '';
+                messageElement.innerHTML = `
+                    <span class="chat-sender">${msg.sender} ${recipientText}</span>
+                    <span class="chat-text">${msg.text}</span>
+                    <span class="chat-timestamp">${new Date(msg.timestamp).toLocaleTimeString()}</span>
+                `;
+                chatMessages.appendChild(messageElement);
             });
-    }
+
+            forceScrollToBottom(); 
+        })
+        .catch(err => {
+            console.error(err);
+        });
+}
 
     chatForm.addEventListener('submit', async (e) => {
         e.preventDefault();
