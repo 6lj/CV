@@ -8,6 +8,7 @@ function setupLiveChat() {
     const loading = chatForm.querySelector('.loading');
     const successMessage = chatForm.querySelector('.success-message');
 
+    // Device detection
     function isAppleDevice() {
         const userAgent = navigator.userAgent.toLowerCase();
         return /macintosh|iphone|ipad|ipod/.test(userAgent);
@@ -21,11 +22,11 @@ function setupLiveChat() {
     function forceScroll() {
         setTimeout(() => {
             if (isAppleDevice()) {
-
+                // Apple: Latest message at bottom (original behavior)
                 chatMessages.scrollTop = chatMessages.scrollHeight - chatMessages.clientHeight;
                 chatMessages.scrollTo({ top: chatMessages.scrollHeight, behavior: 'smooth' });
             } else {
-
+                // Windows/Android: Latest message at top
                 chatMessages.scrollTop = 0;
                 chatMessages.scrollTo({ top: 0, behavior: 'smooth' });
             }
@@ -39,13 +40,13 @@ function setupLiveChat() {
             .then(data => {
                 chatMessages.innerHTML = '';
 
-                if (isAppleDevice()) {
-
-                    data.messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
-                } else {
-
-                    data.messages.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                // Sort messages
+                data.messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+                if (!isAppleDevice()) {
+                    // Windows/Android: Reverse to show latest at top
+                    data.messages.reverse();
                 }
+                // For Apple devices, keep original order (latest at bottom, no reverse)
 
                 data.messages.forEach(msg => {
                     const messageElement = document.createElement('div');
@@ -111,6 +112,11 @@ function setupLiveChat() {
             loading.style.display = 'none';
         }
     });
+
+    // Add class for non-Apple devices to handle CSS
+    if (!isAppleDevice()) {
+        chatMessages.classList.add('non-apple-device');
+    }
 
     updateRecipientList();
     updateChatMessages();
