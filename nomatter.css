@@ -638,7 +638,7 @@ body[dir="rtl"] .form-textarea {
     scroll-behavior: smooth;
 }
 
-.chat-messages.non-apple-device {
+.chat-messages.apple-device {
     flex-direction: column-reverse; 
 }
 .chat-message {
