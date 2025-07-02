@@ -8,20 +8,18 @@ function setupLiveChat() {
     const loading = chatForm.querySelector('.loading');
     const successMessage = chatForm.querySelector('.success-message');
 
-    // Set recipient dropdown to fixed "All"
     function updateRecipientList() {
         chatRecipient.innerHTML = '<option value="all" selected>All</option>';
-        chatRecipient.disabled = true; // Ensure dropdown is disabled
+        chatRecipient.disabled = true; 
     }
 
-    // Update chat messages display
     function updateChatMessages() {
         const currentViewer = localStorage.getItem('currentViewer') || 'Anonymous';
         fetch('/api/chat-messages')
             .then(response => response.json())
             .then(data => {
                 chatMessages.innerHTML = '';
-                // Sort messages by timestamp (oldest to newest)
+
                 data.messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
                 data.messages.forEach(msg => {
                     const messageElement = document.createElement('div');
@@ -34,7 +32,7 @@ function setupLiveChat() {
                     `;
                     chatMessages.appendChild(messageElement);
                 });
-                chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight; 
             })
             .catch(err => {
                 console.error(err);
@@ -42,7 +40,6 @@ function setupLiveChat() {
             });
     }
 
-    // Handle chat form submission
     chatForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const text = chatMessageInput.value.trim();
@@ -60,7 +57,7 @@ function setupLiveChat() {
         fetch('/api/chat-messages', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ sender: currentViewer, text, recipient: 'all' }) // Hardcode recipient
+            body: JSON.stringify({ sender: currentViewer, text, recipient: 'all' }) 
         })
             .then(response => response.json())
             .then(data => {
@@ -83,22 +80,18 @@ function setupLiveChat() {
             });
     });
 
-    // Initial setup
     updateRecipientList();
     updateChatMessages();
 
-    // Poll for new messages
     setInterval(updateChatMessages, 1000);
 }
 
-// Modify viewer.js to set current viewer
 const originalAddViewer = window.addViewer || function() {};
 window.addViewer = function(name) {
     originalAddViewer(name);
     localStorage.setItem('currentViewer', name);
 };
 
-// Initialize chat on DOM load
 document.addEventListener('DOMContentLoaded', () => {
     setupLiveChat();
 });
