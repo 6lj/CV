@@ -624,6 +624,7 @@ body[dir="rtl"] .form-textarea {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
 .chat-messages {
     max-height: 300px;
     overflow-y: auto;
@@ -634,8 +635,16 @@ body[dir="rtl"] .form-textarea {
     border-radius: 12px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; 
     scroll-behavior: smooth;
+
+}
+@media not (pointer: none) {
+    .chat-messages:not(.apple-device) {
+        flex-direction: column-reverse; 
+    }
+}
+.chat-messages.non-apple-device {
+    flex-direction: column-reverse;
 }
 .chat-message {
     display: flex;
