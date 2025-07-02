@@ -88,6 +88,9 @@ function handleFormSubmission() {
             successMessage.style.display = 'block';
             form.reset();
 
+            // Add success notification here
+            showNotification('Message sent', 'info');
+
             setTimeout(() => {
                 btnText.style.opacity = '1';
                 submitBtn.disabled = false;
