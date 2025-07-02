@@ -634,12 +634,9 @@ body[dir="rtl"] .form-textarea {
     border-radius: 12px;
     display: flex;
     flex-direction: column;
-    min-height: 100px;
-    box-sizing: border-box;
+    justify-content: flex-end; 
     scroll-behavior: smooth;
 }
-
-
 .chat-message {
     display: flex;
     flex-direction: column;
