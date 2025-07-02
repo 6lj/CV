@@ -633,8 +633,11 @@ body[dir="rtl"] .form-textarea {
     background: var(--bg-card);
     border: 1px solid var(--border-primary);
     border-radius: 8px;
-    display: flex;
-    flex-direction: column;
+    
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-end; 
+    
 }
 
 .chat-message {
@@ -647,16 +650,14 @@ body[dir="rtl"] .form-textarea {
 
 .chat-message.sent {
     background: rgba(0, 255, 136, 0.1);
-    align-self: flex-end;
+    align-self: flex-end; 
     margin-left: 20%;
 }
-
 .chat-message.received {
     background: rgba(255, 107, 53, 0.1);
-    align-self: flex-start;
+    align-self: flex-start; 
     margin-right: 20%;
 }
-
 .chat-sender {
     font-weight: 500;
     font-size: 0.8rem;
@@ -787,11 +788,6 @@ body[dir="rtl"] .form-textarea {
     background: transparent;
     scrollbar-width: thin;
     scrollbar-color: var(--primary-green) transparent;
-    
-    display: flex; 
-    flex-direction: column; 
-    justify-content: flex-end; 
-    
 }
 
 .chatai-messages::-webkit-scrollbar {
