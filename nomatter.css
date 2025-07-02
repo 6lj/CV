@@ -787,6 +787,11 @@ body[dir="rtl"] .form-textarea {
     background: transparent;
     scrollbar-width: thin;
     scrollbar-color: var(--primary-green) transparent;
+    
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-end; 
+    
 }
 
 .chatai-messages::-webkit-scrollbar {
