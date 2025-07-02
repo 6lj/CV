@@ -26,7 +26,7 @@ function setupLiveChat() {
                 chatMessages.scrollTop = 0;
                 chatMessages.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
-                // Windows/Android: Latest message at bottom
+                // Windows/Android: Latest message at bottom (original)
                 chatMessages.scrollTop = chatMessages.scrollHeight - chatMessages.clientHeight;
                 chatMessages.scrollTo({ top: chatMessages.scrollHeight, behavior: 'smooth' });
             }
@@ -40,26 +40,35 @@ function setupLiveChat() {
             .then(data => {
                 chatMessages.innerHTML = '';
 
-                // Sort messages
                 if (isAppleDevice()) {
-                    // iPhone/Mac: Latest at top (newest first)
+                    // iPhone/Mac: Sort newest-first (latest at top)
                     data.messages.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                    data.messages.forEach(msg => {
+                        const messageElement = document.createElement('div');
+                        messageElement.className = `chat-message ${msg.sender === currentViewer ? 'sent' : 'received'}`;
+                        const recipientText = msg.recipient !== 'all' ? `(to ${msg.recipient})` : '';
+                        messageElement.innerHTML = `
+                            <span class="chat-sender">${msg.sender} ${recipientText}</span>
+                            <span class="chat-text">${msg.text}</span>
+                            <span class="chat-timestamp">${new Date(msg.timestamp).toLocaleTimeString()}</span>
+                        `;
+                        chatMessages.appendChild(messageElement);
+                    });
                 } else {
-                    // Windows/Android: Latest at bottom (oldest first)
+                    // Windows/Android: Sort oldest-first (latest at bottom, original)
                     data.messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+                    data.messages.forEach(msg => {
+                        const messageElement = document.createElement('div');
+                        messageElement.className = `chat-message ${msg.sender === currentViewer ? 'sent' : 'received'}`;
+                        const recipientText = msg.recipient !== 'all' ? `(to ${msg.recipient})` : '';
+                        messageElement.innerHTML = `
+                            <span class="chat-sender">${msg.sender} ${recipientText}</span>
+                            <span class="chat-text">${msg.text}</span>
+                            <span class="chat-timestamp">${new Date(msg.timestamp).toLocaleTimeString()}</span>
+                        `;
+                        chatMessages.appendChild(messageElement);
+                    });
                 }
-
-                data.messages.forEach(msg => {
-                    const messageElement = document.createElement('div');
-                    messageElement.className = `chat-message ${msg.sender === currentViewer ? 'sent' : 'received'}`;
-                    const recipientText = msg.recipient !== 'all' ? `(to ${msg.recipient})` : '';
-                    messageElement.innerHTML = `
-                        <span class="chat-sender">${msg.sender} ${recipientText}</span>
-                        <span class="chat-text">${msg.text}</span>
-                        <span class="chat-timestamp">${new Date(msg.timestamp).toLocaleTimeString()}</span>
-                    `;
-                    chatMessages.appendChild(messageElement);
-                });
 
                 forceScroll();
             })
@@ -113,11 +122,6 @@ function setupLiveChat() {
             loading.style.display = 'none';
         }
     });
-
-    // Add class for Apple devices to handle CSS
-    if (isAppleDevice()) {
-        chatMessages.classList.add('apple-device');
-    }
 
     updateRecipientList();
     updateChatMessages();
