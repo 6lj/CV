@@ -1,6 +1,6 @@
 .certificate-section {
     position: relative;
-    top: -4350px; 
+    top: -4550px; 
     opacity: 0;
     animation: fadeInUp 1s ease-out 0.7s forwards;
 }
