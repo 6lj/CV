@@ -313,7 +313,7 @@ body[dir="rtl"] .form-textarea {
 .certificate-section {
     grid-column: 1;
     grid-row: 2;
-    margin-top: -355px; 
+    margin-top: -385px; 
 }
 
 .personal-info {
@@ -1091,3 +1091,4 @@ body[dir="rtl"] .form-textarea {
 @media (max-width: 768px) {
     
 }
+
