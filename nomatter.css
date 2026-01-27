@@ -103,11 +103,12 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--border-primary);
     z-index: 1000;
-    padding: 15px 0;
+    padding: 12px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .nav-container {
@@ -116,9 +117,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 15px;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 10px;
+    min-height: 50px;
 }
 
 .nav-brand {
@@ -131,8 +133,9 @@ body {
 
 .nav-links {
     display: flex;
-    gap: 25px;
+    gap: 15px;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .nav-link {
@@ -1009,36 +1012,65 @@ a[href*="cv-ar.pdf"]:hover {
     }
 }
 
-/* Mobile Navigation */
-@media (max-width: 768px) {
-    .navigation-header {
-        padding: 10px 0;
-    }
-    
+/* Large tablets */
+@media (max-width: 1024px) and (min-width: 769px) {
     .nav-container {
-        flex-direction: column;
         padding: 0 15px;
-        gap: 12px;
-    }
-    
-    .nav-brand {
-        font-size: 0.95rem;
-        text-align: center;
     }
     
     .nav-links {
         gap: 12px;
-        flex-wrap: wrap;
-        justify-content: center;
     }
     
-    .nav-link {
-        font-size: 0.85rem;
-        padding: 6px 10px;
+    .main-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
     
     .container {
-        margin-top: 160px;
+        margin-top: 80px;
+        padding: 20px 15px;
+    }
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    .navigation-header {
+        padding: 8px 0;
+        position: fixed;
+    }
+    
+    .nav-container {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 10px;
+        gap: 8px;
+        min-height: 45px;
+    }
+    
+    .nav-brand {
+        font-size: 0.85rem;
+        flex: 1;
+        text-align: left;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 60%;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .nav-language-btn {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+        white-space: nowrap;
+    }
+    
+    .container {
+        margin-top: 70px;
+        padding: 15px 10px;
     }
     
     .glass-card {
@@ -1047,8 +1079,10 @@ a[href*="cv-ar.pdf"]:hover {
     }
     
     .main-grid {
-        gap: 18px;
-        padding: 0 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 0;
     }
     
     .main-title {
@@ -1080,44 +1114,85 @@ a[href*="cv-ar.pdf"]:hover {
 /* Small mobile */
 @media (max-width: 480px) {
     .navigation-header {
-        padding: 8px 0;
+        padding: 6px 0;
+    }
+    
+    .nav-container {
+        padding: 0 8px;
+        min-height: 40px;
     }
     
     .nav-brand {
-        font-size: 0.85rem;
-    }
-    
-    .nav-links {
-        gap: 8px;
-    }
-    
-    .nav-link {
         font-size: 0.8rem;
-        padding: 5px 8px;
+        max-width: 65%;
+    }
+    
+    .nav-language-btn {
+        font-size: 0.75rem;
+        padding: 5px 10px;
     }
     
     .container {
-        margin-top: 180px;
+        margin-top: 60px;
+        padding: 10px 8px;
+    }
+    
+    .main-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 0;
     }
     
     .glass-card {
         padding: 12px;
         border-radius: 6px;
-        scroll-margin-top: 190px;
-    }
-    
-    .main-grid {
-        gap: 15px;
-        padding: 0 5px;
+        scroll-margin-top: 70px;
+        margin-bottom: 12px;
     }
     
     .main-title {
         font-size: 1.3rem;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    
+    .section-title {
+        font-size: 1rem;
+        margin-bottom: 10px;
     }
     
     .profile-image {
         width: 80px;
         height: 80px;
+    }
+    
+    /* Chat improvements for mobile */
+    .chatai-input {
+        font-size: 14px;
+        padding: 10px 14px;
+    }
+    
+    .chatai-submit {
+        width: 42px;
+        height: 42px;
+    }
+    
+    .input-container {
+        padding: 3px;
+        gap: 6px;
+    }
+    
+    /* Form improvements */
+    .form-input,
+    .form-textarea {
+        font-size: 14px;
+        padding: 10px 12px;
+    }
+    
+    .submit-btn {
+        padding: 10px 20px;
+        font-size: 14px;
     }
 }
 
