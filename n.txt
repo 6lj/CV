@@ -1,8 +1,0 @@
-              <div class="pulse-circle"></div>
-
-
-              
-        if (!text) {
-            showNotification('Please enter a message', 'error');
-            return;
-        }
